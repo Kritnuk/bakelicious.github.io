@@ -6,7 +6,7 @@
 
 <title>Bakelicious | Custom Cakes in Wakad Pune</title>
 
-<meta name="description" content="Fresh custom eggless cakes in Wakad Pune. Birthday, anniversary, baby shower cakes made to order.">
+<meta name="description" content="Fresh custom cakes in Wakad Pune. Eggless, hygienic, made to order.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -32,63 +32,71 @@ section{
   position:fixed;
   width:100%;
   background:rgba(255,255,255,0.85);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
   padding:15px 8%;
-  border-bottom:1px solid #eee;
   z-index:1000;
   display:flex;
   justify-content:space-between;
-}
-
-.nav a{
-  text-decoration:none;
-  color:#333;
-  margin-left:10px;
 }
 
 /* HERO */
 .hero{
   position:relative;
   height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  width:100%;
   overflow:hidden;
 }
 
+/* SLIDES */
 .hero-slide{
   position:absolute;
   width:100%;
   height:100%;
-  opacity:0;
-  transition:opacity 1s;
-}
-
-.hero-slide img{
-  width:100%;
-  height:100%;
   object-fit:cover;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
 }
 
-.hero-slide.active{opacity:1;}
+.hero-slide.active{
+  opacity:1;
+}
 
-.hero-overlay{
+/* DARK OVERLAY */
+.overlay{
   position:absolute;
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.45);
-}
-
-.hero-content{
-  position:relative;
-  color:white;
+  top:0;
+  left:0;
   z-index:2;
 }
 
-.hero-content h1{font-size:42px;}
-.hero-content p{margin-top:15px;}
+/* TEXT */
+.hero-content{
+  position:relative;
+  z-index:3;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:0 20px;
+}
 
+.hero-content h1{
+  font-size:42px;
+}
+
+.hero-content p{
+  margin-top:15px;
+}
+
+/* BUTTON */
 .btn{
   margin-top:20px;
   padding:14px 30px;
@@ -96,7 +104,6 @@ section{
   color:white;
   border-radius:30px;
   text-decoration:none;
-  display:inline-block;
   transition:0.3s;
 }
 .btn:hover{transform:scale(1.05);}
@@ -120,34 +127,14 @@ section{
 /* REVIEWS */
 .reviews{
   display:grid;
-  gap:25px;
+  gap:20px;
 }
 
 .review{
   background:white;
   padding:25px;
-  border-radius:14px;
-  border:1px solid #eee;
-  box-shadow:0 5px 20px rgba(0,0,0,0.04);
-}
-
-/* INFO */
-.info{
-  background:white;
-  padding:25px;
   border-radius:12px;
   border:1px solid #eee;
-}
-
-/* ANIMATION */
-.fade-up{
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.8s;
-}
-.fade-up.show{
-  opacity:1;
-  transform:translateY(0);
 }
 
 /* RESPONSIVE */
@@ -156,29 +143,7 @@ section{
   .gallery{grid-template-columns:repeat(3,1fr);}
   .reviews{grid-template-columns:repeat(2,1fr);}
 }
-@media(min-width:1024px){
-  .reviews{grid-template-columns:repeat(3,1fr);}
-}
 </style>
-
-<!-- SEO Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  "name": "Bakelicious",
-  "telephone": "+91 9403001247",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Capriccio gate 1, Datta Mandir Rd",
-    "addressLocality": "Wakad",
-    "addressRegion": "Maharashtra",
-    "postalCode": "411057",
-    "addressCountry": "IN"
-  }
-}
-</script>
-
 </head>
 
 <body>
@@ -186,31 +151,33 @@ section{
 <div class="nav">
   <div style="color:#c89b3c;font-weight:600;">Bakelicious</div>
   <div>
-    <a href="https://www.instagram.com/bakelicioust4b/" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/bakelicioust4b/" target="_blank">Instagram</a> |
     <a href="https://www.facebook.com/Bakelicioust4b/" target="_blank">Facebook</a>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO (FULLSCREEN BACKGROUND SLIDESHOW) -->
 <section class="hero">
-  <div class="hero-slide active"><img src="cake1.jpg"></div>
-  <div class="hero-slide"><img src="cake2.jpg"></div>
-  <div class="hero-slide"><img src="cake3.jpg"></div>
-  <div class="hero-slide"><img src="cake4.jpg"></div>
-  <div class="hero-slide"><img src="cake5.jpg"></div>
-  <div class="hero-slide"><img src="cake6.jpg"></div>
 
-  <div class="hero-overlay"></div>
+  <img src="cake1.jpg" class="hero-slide active">
+  <img src="cake2.jpg" class="hero-slide">
+  <img src="cake3.jpg" class="hero-slide">
+  <img src="cake4.jpg" class="hero-slide">
+  <img src="cake5.jpg" class="hero-slide">
+  <img src="cake6.jpg" class="hero-slide">
+
+  <div class="overlay"></div>
 
   <div class="hero-content">
     <h1>Tasty Treats for Your Taste Buds</h1>
     <p>Fresh, hygienic custom cakes made for every celebration</p>
     <a href="https://wa.me/919403001247" class="btn">Order Now</a>
   </div>
+
 </section>
 
 <!-- GALLERY -->
-<section class="fade-up">
+<section>
   <h2>Our Creations</h2>
   <br>
 
@@ -225,64 +192,38 @@ section{
 </section>
 
 <!-- REVIEWS -->
-<section class="fade-up">
+<section>
   <h2>What Customers Say</h2>
   <br>
 
   <div class="reviews">
-    <div class="review">⭐⭐⭐⭐⭐ “Absolutely perfect cake for our daughter's birthday. Beautiful and heavenly taste.” — Divya Nampalli</div>
-    <div class="review">⭐⭐⭐⭐⭐ “We order all cakes from Bakelicious now. Always amazing.” — Sanjeev Galgali</div>
+    <div class="review">⭐⭐⭐⭐⭐ “Absolutely perfect cake for our daughter's birthday.” — Divya Nampalli</div>
+    <div class="review">⭐⭐⭐⭐⭐ “We order all cakes from Bakelicious now.” — Sanjeev Galgali</div>
     <div class="review">⭐⭐⭐⭐⭐ “Perfect customization and amazing taste.” — Supriya Kitukale</div>
     <div class="review">⭐⭐⭐⭐⭐ “Fresh, soft and loved by everyone.” — Khushboo Kejriwal</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Amazing experience from design to delivery.” — Mayur Chaudhari</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Magical design and rich taste.” — Nupur Chourasiya</div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="fade-up">
-  <h2>About Us</h2>
-  <br>
-  <div class="info">
-We bake fresh cakes on preorder basis in a hygienic environment. Every cake is customized to your requirement.
-We offer theme cakes for birthdays, baby showers, anniversaries and more — in cream, fondant and semi-fondant styles.
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="fade-up">
+<section>
   <h2>Visit Us</h2>
   <br>
-  <div class="info">
-<strong>Address:</strong><br>
-Capriccio gate 1, Datta Mandir Rd, Wakad, Pune, Maharashtra 411057<br><br>
-<strong>Contact:</strong> 9403001247
+
+  <div class="review">
+    Capriccio gate 1, Datta Mandir Rd, Wakad, Pune<br><br>
+    Contact: 9403001247
   </div>
 </section>
 
-<div style="text-align:center;padding:30px;color:#777;">
-© 2026 Bakelicious
-</div>
-
 <script>
-let slides=document.querySelectorAll(".hero-slide");
-let i=0;
+let slides = document.querySelectorAll(".hero-slide");
+let index = 0;
 
 setInterval(()=>{
-  slides[i].classList.remove("active");
-  i=(i+1)%slides.length;
-  slides[i].classList.add("active");
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
 },3000);
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-
-document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
 </script>
 
 </body>
