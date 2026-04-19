@@ -31,8 +31,8 @@ section{
 .nav{
   position:fixed;
   width:100%;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(12px);
   padding:15px 8%;
   border-bottom:1px solid #eee;
   z-index:1000;
@@ -40,17 +40,54 @@ section{
   justify-content:space-between;
 }
 
+.nav a{
+  text-decoration:none;
+  color:#333;
+  margin-left:10px;
+}
+
 /* HERO */
 .hero{
+  position:relative;
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+  overflow:hidden;
 }
 
-.hero h1{font-size:40px;}
-.hero p{margin-top:15px;color:#555;}
+.hero-slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1s;
+}
+
+.hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-slide.active{opacity:1;}
+
+.hero-overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+}
+
+.hero-content{
+  position:relative;
+  color:white;
+  z-index:2;
+}
+
+.hero-content h1{font-size:42px;}
+.hero-content p{margin-top:15px;}
 
 .btn{
   margin-top:20px;
@@ -63,30 +100,6 @@ section{
   transition:0.3s;
 }
 .btn:hover{transform:scale(1.05);}
-
-/* SLIDESHOW */
-.slideshow{
-  height:500px;
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-}
-
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  opacity:0;
-  transition:1s;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.active{opacity:1;}
 
 /* GALLERY */
 .gallery{
@@ -112,13 +125,11 @@ section{
 
 .review{
   background:white;
-  padding:30px;
+  padding:25px;
   border-radius:14px;
   border:1px solid #eee;
   box-shadow:0 5px 20px rgba(0,0,0,0.04);
-  transition:0.3s;
 }
-.review:hover{transform:translateY(-6px);}
 
 /* INFO */
 .info{
@@ -128,18 +139,11 @@ section{
   border:1px solid #eee;
 }
 
-/* FOOTER */
-.footer{
-  text-align:center;
-  padding:40px;
-  color:#777;
-}
-
 /* ANIMATION */
 .fade-up{
   opacity:0;
   transform:translateY(40px);
-  transition:0.8s ease;
+  transition:0.8s;
 }
 .fade-up.show{
   opacity:1;
@@ -148,7 +152,7 @@ section{
 
 /* RESPONSIVE */
 @media(min-width:768px){
-  .hero h1{font-size:60px;}
+  .hero-content h1{font-size:60px;}
   .gallery{grid-template-columns:repeat(3,1fr);}
   .reviews{grid-template-columns:repeat(2,1fr);}
 }
@@ -182,71 +186,70 @@ section{
 <div class="nav">
   <div style="color:#c89b3c;font-weight:600;">Bakelicious</div>
   <div>
-    <a href="https://www.instagram.com/bakelicioust4b/" target="_blank">Instagram</a> |
+    <a href="https://www.instagram.com/bakelicioust4b/" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/Bakelicioust4b/" target="_blank">Facebook</a>
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
-  <div>
+  <div class="hero-slide active"><img src="cake1.jpg"></div>
+  <div class="hero-slide"><img src="cake2.jpg"></div>
+  <div class="hero-slide"><img src="cake3.jpg"></div>
+  <div class="hero-slide"><img src="cake4.jpg"></div>
+  <div class="hero-slide"><img src="cake5.jpg"></div>
+  <div class="hero-slide"><img src="cake6.jpg"></div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
     <h1>Tasty Treats for Your Taste Buds</h1>
     <p>Fresh, hygienic custom cakes made for every celebration</p>
     <a href="https://wa.me/919403001247" class="btn">Order Now</a>
   </div>
 </section>
 
+<!-- GALLERY -->
 <section class="fade-up">
-  <h2>Featured Cakes</h2>
-  <br>
-
-  <div class="slideshow">
-    <div class="slide active"><img src="cake9.jpg"></div>
-    <div class="slide"><img src="cake2.jpg"></div>
-    <div class="slide"><img src="cake8.jpg"></div>
-    <div class="slide"><img src="cake7.jpg"></div>
-    <div class="slide"><img src="cake12.jpg"></div>
-    <div class="slide"><img src="cake10.jpg"></div>
-  </div>
-</section>
-
-<section class="fade-up">
-  <h2>Gallery</h2>
+  <h2>Our Creations</h2>
   <br>
 
   <div class="gallery">
-    <img src="cake6.jpg">
-    <img src="cake5.jpg">
-    <img src="cake4.jpg">
-    <img src="cake3.jpg">
+    <img src="cake7.jpg">
+    <img src="cake8.jpg">
+    <img src="cake9.jpg">
+    <img src="cake10.jpg">
     <img src="cake11.jpg">
-    <img src="cake1.jpg">
+    <img src="cake12.jpg">
   </div>
 </section>
 
+<!-- REVIEWS -->
 <section class="fade-up">
   <h2>What Customers Say</h2>
   <br>
 
   <div class="reviews">
     <div class="review">⭐⭐⭐⭐⭐ “Absolutely perfect cake for our daughter's birthday. Beautiful and heavenly taste.” — Divya Nampalli</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Highly recommended. We order all cakes from Bakelicious now.” — Sanjeev Galgali</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Customisation was perfect and cake tasted amazing.” — Supriya Kitukale</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Fresh, soft and delicious cake loved by everyone.” — Khushboo Kejriwal</div>
+    <div class="review">⭐⭐⭐⭐⭐ “We order all cakes from Bakelicious now. Always amazing.” — Sanjeev Galgali</div>
+    <div class="review">⭐⭐⭐⭐⭐ “Perfect customization and amazing taste.” — Supriya Kitukale</div>
+    <div class="review">⭐⭐⭐⭐⭐ “Fresh, soft and loved by everyone.” — Khushboo Kejriwal</div>
     <div class="review">⭐⭐⭐⭐⭐ “Amazing experience from design to delivery.” — Mayur Chaudhari</div>
     <div class="review">⭐⭐⭐⭐⭐ “Magical design and rich taste.” — Nupur Chourasiya</div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="fade-up">
   <h2>About Us</h2>
   <br>
   <div class="info">
-We bake fresh cakes on preorder basis. Every cake is made hygienically and customized to your needs.
-We create theme cakes like jungle, princess, cartoon, baby shower, anniversary and more.
-Available in cream, fondant and semi-fondant styles.
+We bake fresh cakes on preorder basis in a hygienic environment. Every cake is customized to your requirement.
+We offer theme cakes for birthdays, baby showers, anniversaries and more — in cream, fondant and semi-fondant styles.
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="fade-up">
   <h2>Visit Us</h2>
   <br>
@@ -257,18 +260,18 @@ Capriccio gate 1, Datta Mandir Rd, Wakad, Pune, Maharashtra 411057<br><br>
   </div>
 </section>
 
-<div class="footer">
-  © 2026 Bakelicious | Premium Cake Studio
+<div style="text-align:center;padding:30px;color:#777;">
+© 2026 Bakelicious
 </div>
 
 <script>
-let slides=document.querySelectorAll(".slide");
-let index=0;
+let slides=document.querySelectorAll(".hero-slide");
+let i=0;
 
 setInterval(()=>{
-  slides[index].classList.remove("active");
-  index=(index+1)%slides.length;
-  slides[index].classList.add("active");
+  slides[i].classList.remove("active");
+  i=(i+1)%slides.length;
+  slides[i].classList.add("active");
 },3000);
 
 const observer=new IntersectionObserver(entries=>{
