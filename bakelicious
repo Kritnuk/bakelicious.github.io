@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bakelicious | Luxury Cake Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0a0a0a;
+  color:white;
+}
+
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+}
+
+section{
+  padding:60px 6%;
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 6%;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  color:#f8d28c;
+  font-size:20px;
+}
+
+.nav a{
+  color:white;
+  margin-left:15px;
+  font-size:13px;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.95)),
+  url('https://images.unsplash.com/photo-1551024506-0bccd828d307') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 10px;
+}
+
+.hero h1{
+  font-size:34px;
+  line-height:1.3;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:14px;
+  opacity:0.85;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  border-radius:30px;
+  background:#f8d28c;
+  color:black;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+
+/* GALLERY */
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* REVIEWS */
+.review{
+  background:#1a1a1a;
+  padding:18px;
+  border-radius:12px;
+  font-size:14px;
+}
+
+/* PROCESS */
+.step{
+  background:#111;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* FORM */
+input,button{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  background:#25D366;
+  padding:14px;
+  border-radius:50%;
+  font-size:18px;
+  color:white;
+  text-decoration:none;
+}
+
+/* TABLET */
+@media(min-width:768px){
+  .hero h1{font-size:50px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* DESKTOP */
+@media(min-width:1024px){
+  section{padding:100px 10%;}
+  .hero h1{font-size:65px;}
+  .grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <div class="logo">Bakelicious</div>
+  <div>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#order">Order</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div>
+    <h1>Luxury Cakes That Feel Special</h1>
+    <p>Custom eggless cakes crafted for unforgettable celebrations.</p>
+    <a href="https://wa.me/919403001247" class="btn">Order on WhatsApp</a>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Our Cakes</h2>
+  <br>
+  <div class="grid gallery">
+    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307">
+    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+  </div>
+</section>
+
+<section>
+  <h2>How It Works</h2>
+  <br>
+  <div class="grid">
+    <div class="step">Tell us your idea</div>
+    <div class="step">We design it</div>
+    <div class="step">Fresh delivery</div>
+  </div>
+</section>
+
+<section id="reviews">
+  <h2>Customer Reviews</h2>
+  <br>
+  <div class="grid">
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Amazing taste and design.”</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Exactly what I wanted.”</div>
+    <div class="review">⭐️⭐️⭐️⭐️ “Loved it.”</div>
+  </div>
+</section>
+
+<section id="order">
+  <h2>Order Now</h2>
+
+  <form onsubmit="sendToWhatsApp(event)">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="cake" placeholder="Cake Design" required>
+    <input type="date" id="date" required>
+    <button class="btn">Send Order</button>
+  </form>
+</section>
+
+<a href="https://wa.me/919403001247" class="whatsapp">💬</a>
+
+<script>
+function sendToWhatsApp(e){
+  e.preventDefault();
+  let name=document.getElementById("name").value;
+  let cake=document.getElementById("cake").value;
+  let date=document.getElementById("date").value;
+
+  let msg=`Hello, I want to order a cake.%0AName: ${name}%0ACake: ${cake}%0ADate: ${date}`;
+  window.open(`https://wa.me/919403001247?text=${msg}`);
+}
+</script>
+
+</body>
+</html>
